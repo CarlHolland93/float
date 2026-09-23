@@ -21,8 +21,8 @@ Requires Node.js 22.12+ and npm. Open the local URL printed by Vite.
 
 ## Interactions
 
-- **Move:** drag the dotted handle, or the conversation header. The panel stays inside the visible viewport.
-- **Expand:** use the expand button or send a message to open the conversation.
+- **Move:** drag the edge of the input pill, or the conversation header. The panel stays inside the visible viewport.
+- **Expand:** choose Open conversation in the `+` menu, use the sidebar, or send a message.
 - **Focus:** choose Chat to soften the page, or Area to keep one outlined section sharp. Off restores the canvas.
 - **Tune:** adjust the blur from 0 to 12px.
 - **Dock:** use the `+` menu to place chat at the bottom left, centre, or right.
@@ -44,7 +44,7 @@ This is an **interaction prototype**, with local, predefined replies. No AI prov
 
 The page contains faint outlines instead of document content. Selecting an area associates its name with the conversation; it does not extract document text. The visual blur is an attention aid, not a privacy or redaction feature.
 
-The three-column workspace was inspired by a Pocket interface reference. This implementation uses neutral controls and outline shapes, with no interface branding, reference screenshots, meeting content, or Pocket assets. It is not affiliated with Pocket.
+The workspace and chat controls follow a Pocket interface reference, including the input shape, labels, expanded panel, and soft blue glow. The page uses neutral outline shapes and sample responses; no reference screenshots or meeting content are included. This independent interface study is not affiliated with Pocket. The Pro selector is a local UI demo and does not select a real model or plan.
 
 ## Development
 

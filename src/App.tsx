@@ -18,6 +18,7 @@ import {
 import { Canvas, regions } from './components/Canvas';
 import { Composer, type Message } from './components/Composer';
 import { IconButton } from './components/Controls';
+import { demoResponse } from './lib/demo-response';
 
 type Focus = 'off' | 'chat' | 'area';
 
@@ -125,11 +126,7 @@ export default function App() {
     }
   };
   const send = (content: string) => {
-    const context =
-      selected !== null
-        ? `the ${regions[selected].toLowerCase()} area`
-        : 'your canvas';
-    const reply = `Demo response for ${context}. No AI provider is connected.`;
+    const reply = demoResponse(selected !== null ? regions[selected] : null);
     setMessages((current) => [
       ...current,
       { id: ++messageId.current, role: 'user', content },

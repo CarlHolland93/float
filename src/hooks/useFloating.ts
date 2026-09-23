@@ -41,7 +41,7 @@ export function useFloating() {
 
   const size = useCallback((): Size => {
     const rect = panelRef.current?.getBoundingClientRect();
-    return { width: rect?.width ?? 560, height: rect?.height ?? 76 };
+    return { width: rect?.width ?? 580, height: rect?.height ?? 56 };
   }, []);
 
   const dock = useCallback(
@@ -61,9 +61,12 @@ export function useFloating() {
         if (!old) {
           return dockInView('center', next);
         }
-        // Keep the bottom edge steady when a conversation opens or closes.
+        // Keep the centre and bottom edge steady as the composer changes size.
         return constrain(
-          { x: current.x, y: current.y + old.height - next.height },
+          {
+            x: current.x + (old.width - next.width) / 2,
+            y: current.y + old.height - next.height,
+          },
           next,
         );
       });

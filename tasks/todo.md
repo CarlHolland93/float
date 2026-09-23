@@ -1,5 +1,16 @@
 # Float implementation
 
+## Pocket composer reference
+
+- [x] Remove the Detailed, Concise, and Rewrite actions and their unused state; retain the clean input and conversation.
+
+- [x] Match the 580px pill, 680px expanded panel, controls, type sizes, and blue/pastel shadow in the supplied references.
+- [x] Preserve movement and area focus with unobtrusive drag targets, and use neutral local sample responses.
+- [x] Verify compact/expanded layouts and mobile bounds.
+- [ ] Publish together with the rounded focus-area change.
+
+Verified compact edge dragging, keyboard docking, opening and closing the conversation, sending and resetting local messages, feedback, and the Pro selector. Both layouts fit a 390px viewport. TypeScript/production build and all 14 geometry tests pass. Removed the response-style actions from both layouts as requested.
+
 ## Rounded focus areas
 
 - [x] Use the shared radius token on all four corners of every focus area; remove square top-corner overrides from Notes and Connections.
