@@ -1,5 +1,13 @@
 # Float implementation
 
+## Empty workspace
+
+- [x] Remove the page's placeholder text, tags, and connection diagram while keeping the input controls.
+- [x] Show empty selection outlines only when using Area focus.
+- [x] Check the empty workspace and area-selection flow on desktop/mobile, and refresh the preview.
+
+Production build passed. Desktop and 390px mobile both show an empty workspace with the input controls intact. Choosing Area reveals selection outlines, selecting a region sets context, and Escape returns to the empty page.
+
 ## Collapsed workspace frame
 
 - [x] Match Pocket's filled split-panel icons for the left and right toggles.

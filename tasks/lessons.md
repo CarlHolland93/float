@@ -5,3 +5,4 @@
 - When Charlie asks to match a specific reference control, reproduce its dimensions, labels, control placement, and shadow. Do not replace the reference interaction with a newly branded version. Keep private reference content out of the public demo.
 - Match the relevant parts of a reference, then remove actions that do not support this prototype. Response-style shortcuts add noise to an experiment about movable chat and focus.
 - Collapsing a side panel should preserve the reference's narrow outer frame and rounded workspace corners. Match the filled split-panel toggle silhouette instead of adding directional arrows.
+- When Charlie removes surrounding page content, leave the workspace empty by default. Keep the chat controls intact and reveal selection outlines only when their focus interaction is requested.
