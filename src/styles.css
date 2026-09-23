@@ -262,7 +262,7 @@ svg {
   position: relative;
   padding: 20px 24px 24px;
   border: 1px solid transparent;
-  border-radius: 11px;
+  border-radius: var(--radius-md);
   margin-bottom: 15px;
   transition:
     filter 350ms ease,
@@ -368,7 +368,6 @@ svg {
 }
 .region-1 {
   border-top-color: #f0f2f4;
-  border-radius: 0 0 11px 11px;
   padding-top: 23px;
 }
 .outline-note {
@@ -395,7 +394,6 @@ svg {
 }
 .region-2 {
   border-top-color: #f0f2f4;
-  border-radius: 0 0 11px 11px;
   padding-top: 23px;
 }
 .connection-map {

@@ -1,5 +1,10 @@
 # Float implementation
 
+## Rounded focus areas
+
+- [x] Use the shared radius token on all four corners of every focus area; remove square top-corner overrides from Notes and Connections.
+- [x] Production build and formatting checks pass; browser inspection confirms rounded upper and lower corners on Notes and Connections.
+
 ## Simplification pass
 
 - [x] Remove branding, the Personal space block, peripheral copy, and the Context and Canvas control sections.
