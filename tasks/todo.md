@@ -1,5 +1,13 @@
 # Float implementation
 
+## Restore content blocks
+
+- [x] Restore the faint overview, notes, and connection blocks with rounded focus regions.
+- [x] Keep the current chat controls, panel icons, and 6px workspace frame.
+- [x] Verify the visible blocks and focus behavior, and refresh the preview.
+
+Production build and formatting checks passed. The overview, notes, and connection blocks are visible again on desktop and mobile. Selecting a block keeps it sharp while surrounding blocks blur.
+
 ## Empty workspace
 
 - [x] Remove the page's placeholder text, tags, and connection diagram while keeping the input controls.
