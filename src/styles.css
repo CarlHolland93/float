@@ -314,7 +314,8 @@ svg {
   opacity: 1;
 }
 @media (hover: hover) and (pointer: fine) {
-  .has-hover-focus:has(.document-region:hover) .document-region:not(:hover) {
+  .has-hover-focus:has(.document-region:hover)
+    .document-region:not(:hover):not(.is-selected) {
     filter: blur(var(--focus-blur));
     opacity: 0.56;
   }

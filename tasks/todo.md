@@ -1,5 +1,13 @@
 # Float implementation
 
+## Preserve the selected card during hover
+
+- [x] Keep the selected card and hovered card clear together; blur only the remaining cards.
+- [x] Remove the compact input placeholder while preserving its accessible label and controls.
+- [x] Verify hover and pointer exit, and refresh the preview.
+
+Browser-verified the selected Notes card stays clear while hovering Overview, with Connections blurred. Leaving Overview returns to Notes-only focus. The compact input has no placeholder and retains its Message accessible label. Production build and formatting checks pass.
+
 ## Hover focus
 
 - [x] Keep the hovered card sharp and soften the surrounding cards using the current blur strength.

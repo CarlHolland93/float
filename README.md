@@ -23,7 +23,7 @@ Requires Node.js 22.12+ and npm. Open the local URL printed by Vite.
 
 - **Move:** drag the edge of the input pill, or the conversation header. The panel stays inside the visible viewport.
 - **Expand:** choose Open conversation in the `+` menu, use the sidebar, or send a message.
-- **Hover:** move over a content card to keep it sharp while the other cards soften. Leaving the card restores the previous focus; Off disables hover focus. Touch screens keep tap-to-select behavior.
+- **Hover:** move over a content card to keep it sharp. A selected card also stays clear while the remaining cards soften. Leaving the card restores the previous focus; Off disables hover focus. Touch screens keep tap-to-select behavior.
 - **Focus:** choose Chat to soften the page, or Area to keep one outlined section sharp. Off restores the canvas.
 - **Tune:** adjust the blur from 0 to 12px.
 - **Dock:** use the `+` menu to place chat at the bottom left, centre, or right.

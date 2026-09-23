@@ -6,4 +6,4 @@
 - Match the relevant parts of a reference, then remove actions that do not support this prototype. Response-style shortcuts add noise to an experiment about movable chat and focus.
 - Collapsing a side panel should preserve the reference's narrow outer frame and rounded workspace corners. Match the filled split-panel toggle silhouette instead of adding directional arrows.
 - Follow the latest request for page-content visibility: show or hide the content blocks while preserving the accepted chat controls, panel icons, and workspace frame.
-- Hover focus is temporary: reveal the hovered card without changing the selected context, restore the prior focus on exit, and respect the Off control and touch input.
+- Hover focus is temporary and additive: keep the selected card clear while revealing the hovered card, without changing the selected context. Restore the prior focus on exit, and respect the Off control and touch input.

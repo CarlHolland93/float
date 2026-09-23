@@ -386,7 +386,7 @@ export function Composer({
           <input
             ref={inputRef}
             aria-label="Message"
-            placeholder={expanded ? 'Reply to Pocket' : 'Ask Pocket anything'}
+            placeholder={expanded ? 'Reply to Pocket' : ''}
             value={draft}
             maxLength={2000}
             autoComplete="off"
