@@ -6,7 +6,7 @@
 - [x] Implement a draggable, keyboard-accessible composer and expandable demo conversation.
 - [x] Add chat and area focus, adjustable blur, docking, and reset.
 - [x] Verify the build, interaction geometry, and browser flows at desktop and mobile sizes.
-- [ ] Prepare MIT license, contribution guidance, CI, and publish the public GitHub repository.
+- [x] Prepare MIT license, contribution guidance, CI, and publish the public GitHub repository.
 
 ## Design decisions
 
@@ -24,3 +24,5 @@
 - Fixed options menu clipping near the top edge, mobile controls covering selection targets, keyboard focus outlines under blur, and mobile source-link naming.
 - VisualViewport resize/scroll handling keeps the composer within the visible area; physical-device software keyboard testing remains separate from desktop viewport checks.
 - No actual AI integration; replies are visibly marked local demos.
+- Public source: https://github.com/CarlHolland93/float. GitHub Actions builds and publishes the static playground to GitHub Pages.
+- npm audit reported zero vulnerabilities after updating the test runner.

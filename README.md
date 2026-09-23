@@ -8,6 +8,8 @@ Float explores a simple idea: bring the conversation to the work. Drag a compact
 
 ## Try it
 
+[Open the live playground](https://carlholland93.github.io/float/).
+
 Run the playground locally:
 
 ```bash
