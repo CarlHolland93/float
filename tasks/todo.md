@@ -1,5 +1,13 @@
 # Float implementation
 
+## Hover focus
+
+- [x] Keep the hovered card sharp and soften the surrounding cards using the current blur strength.
+- [x] Restore the existing chat or selected-area focus on pointer exit; respect Off and avoid sticky hover on touch screens.
+- [x] Verify hover, pointer exit, and selected-area behavior in the browser.
+
+Browser-verified hover without selecting a card, moving between cards, return to a selected region on exit, and Off disabling hover blur. The production build passes. Hover styles apply only to devices reporting a fine pointer with hover; touch selection handlers are unchanged.
+
 ## Restore content blocks
 
 - [x] Restore the faint overview, notes, and connection blocks with rounded focus regions.

@@ -19,15 +19,19 @@ export function Canvas({
   selected,
   picking,
   blurred,
+  hoverFocus,
   onSelect,
 }: {
   selected: number | null;
   picking: boolean;
   blurred: boolean;
+  hoverFocus: boolean;
   onSelect: (region: number) => void;
 }) {
   return (
-    <div className={`document ${picking ? 'is-picking' : ''}`}>
+    <div
+      className={`document ${picking ? 'is-picking' : ''} ${hoverFocus ? 'has-hover-focus' : ''}`}
+    >
       <div className="document-regions">
         {regions.map((name, index) => (
           <button

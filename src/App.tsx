@@ -268,6 +268,7 @@ export default function App() {
             selected={focus === 'area' ? selected : null}
             picking={picking}
             blurred={focusEngaged}
+            hoverFocus={focus !== 'off'}
             onSelect={select}
           />
         </div>

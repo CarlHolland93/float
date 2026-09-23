@@ -313,6 +313,16 @@ svg {
   filter: none;
   opacity: 1;
 }
+@media (hover: hover) and (pointer: fine) {
+  .has-hover-focus:has(.document-region:hover) .document-region:not(:hover) {
+    filter: blur(var(--focus-blur));
+    opacity: 0.56;
+  }
+  .has-hover-focus .document-region:hover {
+    filter: none;
+    opacity: 1;
+  }
+}
 .is-picking .document-region {
   border: 1px dashed #c2cbd3;
   cursor: crosshair;
