@@ -1,5 +1,14 @@
 # Float implementation
 
+## Public release and demo
+
+- [x] Verify the repository belongs to the personal CarlHolland93 account and is public.
+- [x] Audit current files and Git history for credentials and private reference content.
+- [x] Record a demo GIF of moving the input, hovering over cards, and preserving selected-card focus.
+- [x] Embed the GIF in the README and verify the result.
+
+Gitleaks 8.30.1 found no credentials in the tracked snapshot or existing Git history. Manual source and historical-image review found no private reference content. The 14.33-second, 960 × 675 demo GIF shows real prototype interactions and is approximately 500 KB. The README includes the animation and a correctly encoded PNG static preview.
+
 ## Preserve the selected card during hover
 
 - [x] Keep the selected card and hovered card clear together; blur only the remaining cards.

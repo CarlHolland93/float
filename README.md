@@ -4,7 +4,9 @@ An open-source prototype for movable chat and contextual focus.
 
 Drag the chat input anywhere on the screen, expand it into a conversation, and blur the surrounding page. The interface keeps navigation and focus controls minimal so attention stays on the centre.
 
-![Float playground with a movable chat input and content outlines](docs/playground.png)
+![Float demo: moving the input, hovering over cards, and keeping the selected card clear](docs/demo.gif)
+
+Drag the input, hover to focus, and keep a selected card clear as you explore. [Static preview](docs/playground.png).
 
 ## Try it
 
