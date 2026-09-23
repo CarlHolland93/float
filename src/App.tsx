@@ -1,33 +1,23 @@
 import { useEffect, useRef, useState } from 'react';
 import type { CSSProperties } from 'react';
 import {
-  ArrowDownLeft,
   ArrowLeft,
-  ArrowUpRight,
-  Check,
-  ChevronDown,
   CircleHelp,
-  Command,
   Crosshair,
   FileText,
-  Folder,
   Github,
-  LayoutTemplate,
+  Home,
   MessageCircle,
-  MousePointer2,
   PanelLeftClose,
   PanelLeftOpen,
   PanelRightClose,
   PanelRightOpen,
-  Plus,
   RotateCcw,
-  SlidersHorizontal,
-  Sparkles,
   X,
 } from 'lucide-react';
 import { Canvas, regions } from './components/Canvas';
 import { Composer, type Message } from './components/Composer';
-import { FloatMark, IconButton } from './components/Controls';
+import { IconButton } from './components/Controls';
 
 type Focus = 'off' | 'chat' | 'area';
 
@@ -38,7 +28,6 @@ export default function App() {
   const [selected, setSelected] = useState<number | null>(null);
   const [picking, setPicking] = useState(false);
   const [blur, setBlur] = useState(6);
-  const [outlines, setOutlines] = useState(true);
   const [sidebar, setSidebar] = useState(() => window.innerWidth > 900);
   const [inspector, setInspector] = useState(() => window.innerWidth > 700);
   const [help, setHelp] = useState(false);
@@ -106,7 +95,6 @@ export default function App() {
     setSelected(null);
     setPicking(false);
     setBlur(6);
-    setOutlines(true);
     setMessages([]);
     setHelp(false);
     setResetVersion((value) => value + 1);
@@ -141,15 +129,7 @@ export default function App() {
       selected !== null
         ? `the ${regions[selected].toLowerCase()} area`
         : 'your canvas';
-    let reply = `Your thought is here, alongside ${context}. Try moving this conversation somewhere that feels right.\n\nThis is a local interaction demo. Responses are predefined; no message is sent to an AI service.`;
-    if (content === 'Summarise')
-      reply = `A movable conversation. A quieter canvas. Your context stays close.\n\nIn a connected version, this would summarise ${context}. These outlines contain no actual content.`;
-    if (content === 'Explore')
-      reply =
-        'Try selecting an area behind this conversation. It will stay sharp as everything around it softens.\n\nThen drag this window alongside it. The conversation follows your attention.';
-    if (content === 'Rewrite')
-      reply =
-        'A place for a thought, wherever you need it.\n\nThis is a sample response for the interaction. Connect an AI provider to rewrite real content.';
+    const reply = `Demo response for ${context}. No AI provider is connected.`;
     setMessages((current) => [
       ...current,
       { id: ++messageId.current, role: 'user', content },
@@ -165,20 +145,7 @@ export default function App() {
       style={{ '--focus-blur': `${blur}px` } as CSSProperties}
     >
       <header className="topbar">
-        <a
-          className="brand"
-          href="#"
-          onClick={(event) => {
-            event.preventDefault();
-            reset();
-          }}
-          aria-label="Float home"
-        >
-          <FloatMark />
-          <span>
-            float<span className="brand-period">.</span>
-          </span>
-        </a>
+        <div className="topbar-gutter" aria-hidden="true" />
         <div className="topbar-left">
           <IconButton
             label={sidebar ? 'Hide navigation' : 'Show navigation'}
@@ -192,29 +159,12 @@ export default function App() {
           </IconButton>
           <div className="document-tab">
             <FileText size={14} />
-            <span>Untitled canvas</span>
-            <span className="tab-dot" />
+            <span>Untitled</span>
           </div>
         </div>
         <div className="topbar-right">
-          <span className="experiment-label">An interface experiment</span>
-          <a
-            className="source-link"
-            aria-label="View source on GitHub"
-            href="https://github.com/CarlHolland93/float"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Github size={15} />
-            <span>Source</span>
-            <ArrowUpRight size={12} />
-          </a>
           <IconButton
-            label={
-              inspector
-                ? 'Hide playground controls'
-                : 'Show playground controls'
-            }
+            label={inspector ? 'Hide focus controls' : 'Show focus controls'}
             onClick={() => setInspector(!inspector)}
           >
             {inspector ? (
@@ -227,15 +177,6 @@ export default function App() {
       </header>
 
       <aside className="sidebar" aria-label="Main navigation">
-        <div className="workspace-switcher">
-          <span className="workspace-avatar">F</span>
-          <div>
-            <strong>Personal space</strong>
-            <span>Make room for a thought</span>
-          </div>
-          <ChevronDown size={13} aria-hidden="true" />
-        </div>
-        <div className="nav-label">WORKSPACE</div>
         <nav>
           <button
             type="button"
@@ -245,9 +186,8 @@ export default function App() {
               setActive(false);
             }}
           >
-            <LayoutTemplate size={17} />
-            <span>Canvas</span>
-            <span className="nav-indicator" />
+            <Home size={17} />
+            <span>Home</span>
           </button>
           <button
             type="button"
@@ -264,52 +204,28 @@ export default function App() {
             )}
           </button>
         </nav>
-        <div className="nav-label spaces-label">
-          SPACES
-          <IconButton label="New canvas" onClick={reset}>
-            <Plus size={14} />
-          </IconButton>
-        </div>
-        <button
-          type="button"
-          className="nav-item space-item"
-          onClick={() => {
-            setExpanded(false);
-            setPicking(false);
-          }}
-        >
-          <Folder size={16} />
-          <span>Untitled</span>
-          <span className="count">1</span>
-        </button>
         <div className="sidebar-bottom">
-          <div className="experiment-card">
-            <div className="experiment-card-top">
-              <span className="live-dot" />
-              <span>EXPERIMENT 001</span>
-            </div>
-            <strong>AI, with room to move.</strong>
-            <p>
-              A small exploration of
-              <br />
-              conversation and focus.
-            </p>
-          </div>
           <button
             type="button"
             ref={helpButtonRef}
-            className="nav-item help-button"
+            className="icon-button"
+            aria-label="Keyboard shortcuts"
+            title="Keyboard shortcuts"
             onClick={() => setHelp(!help)}
             aria-expanded={help}
           >
-            <CircleHelp size={17} />
-            <span>How it works</span>
-            <ArrowUpRight size={13} />
+            <CircleHelp size={16} />
           </button>
-          <div className="sidebar-footer">
-            <span>Float playground</span>
-            <span>v0.1</span>
-          </div>
+          <a
+            className="icon-button"
+            aria-label="View source on GitHub"
+            title="View source on GitHub"
+            href="https://github.com/CarlHolland93/float"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Github size={16} />
+          </a>
         </div>
       </aside>
 
@@ -328,12 +244,9 @@ export default function App() {
             >
               <ArrowLeft size={15} />
             </button>
-            <span>Workspace</span>
-            <span className="breadcrumb-slash">/</span>
-            <strong>Untitled</strong>
+            <span>Back</span>
           </div>
           <div className="canvas-tools">
-            <span className="outline-label">Content-free canvas</span>
             <IconButton label="Reset playground" onClick={reset}>
               <RotateCcw size={15} />
             </IconButton>
@@ -360,158 +273,44 @@ export default function App() {
             selected={focus === 'area' ? selected : null}
             picking={picking}
             blurred={focusEngaged}
-            showOutlines={outlines}
             onSelect={select}
           />
         </div>
-        <div className="canvas-status">
-          <span>
-            <span className={`status-dot ${focusEngaged ? 'engaged' : ''}`} />
-            {picking
-              ? 'Choosing a focus area'
-              : focusEngaged
-                ? selected !== null
-                  ? `${regions[selected]} in focus`
-                  : 'Conversation in focus'
-                : 'A clear canvas'}
-          </span>
-          <span>
-            <Command size={11} /> K{' '}
-            <span className="status-separator">to start a thought</span>
-          </span>
-        </div>
       </main>
 
-      <aside className="inspector" aria-label="Playground controls">
-        <div className="inspector-title">
-          <SlidersHorizontal size={15} />
-          <h1>Playground</h1>
-          <span>LIVE</span>
-        </div>
-        <section className="control-section">
-          <div className="section-eyebrow">
-            01 <span>ATTENTION</span>
-          </div>
-          <h2>A softer background.</h2>
-          <p>Keep your next thought in focus.</p>
-          <div className="segmented" aria-label="Focus mode" role="group">
-            {(['off', 'chat', 'area'] as const).map((value) => (
-              <button
-                type="button"
-                key={value}
-                aria-pressed={focus === value}
-                className={focus === value ? 'is-selected' : ''}
-                onClick={() => changeFocus(value)}
-              >
-                {value === 'off' ? 'Off' : value === 'chat' ? 'Chat' : 'Area'}
-              </button>
-            ))}
-          </div>
-          <div className="range-label">
-            <label htmlFor="blur">Blur strength</label>
-            <output htmlFor="blur">
-              {blur}
-              <span>px</span>
-            </output>
-          </div>
-          <input
-            id="blur"
-            className="blur-range"
-            type="range"
-            min="0"
-            max="12"
-            step="1"
-            value={blur}
-            onChange={(event) => setBlur(Number(event.target.value))}
-            style={
-              { '--range-value': `${(blur / 12) * 100}%` } as CSSProperties
-            }
-          />
-          <div className="range-captions">
-            <span>Subtle</span>
-            <span>Immersive</span>
-          </div>
-        </section>
-        <section className="control-section">
-          <div className="section-eyebrow">
-            02 <span>CONTEXT</span>
-          </div>
-          <div className="context-preview">
-            <div
-              className={`preview-sheet ${selected !== null ? 'has-selection' : ''}`}
-              aria-hidden="true"
-            >
-              <i />
-              <i />
-              <i />
-              <i />
-            </div>
-            <div>
-              <strong>
-                {selected !== null ? regions[selected] : 'The whole canvas'}
-              </strong>
-              <span>
-                {selected !== null
-                  ? 'One area. Full attention.'
-                  : 'Or focus on just one area.'}
-              </span>
-            </div>
-          </div>
-          <button
-            type="button"
-            className={`select-area-button ${picking ? 'is-picking' : ''}`}
-            onClick={pick}
-          >
-            <Crosshair size={15} />
-            {picking ? 'Select on the canvas…' : 'Select an area'}
-            <ArrowUpRight size={13} />
-          </button>
-          {selected !== null && (
+      <aside className="inspector" aria-label="Focus controls">
+        <h1 className="focus-heading">Focus</h1>
+        <div className="segmented" aria-label="Focus mode" role="group">
+          {(['off', 'chat', 'area'] as const).map((value) => (
             <button
               type="button"
-              className="clear-context"
-              onClick={() => {
-                setSelected(null);
-                setFocus('off');
-                setPicking(false);
-              }}
+              key={value}
+              aria-pressed={focus === value}
+              className={focus === value ? 'is-selected' : ''}
+              onClick={() => changeFocus(value)}
             >
-              Clear selection <X size={12} />
+              {value === 'off' ? 'Off' : value === 'chat' ? 'Chat' : 'Area'}
             </button>
-          )}
-        </section>
-        <section className="control-section canvas-controls">
-          <div className="section-eyebrow">
-            03 <span>CANVAS</span>
-          </div>
-          <label className="toggle-label" htmlFor="outlines">
-            <span>Content outlines</span>
-            <input
-              id="outlines"
-              className="toggle"
-              role="switch"
-              type="checkbox"
-              checked={outlines}
-              onChange={(event) => setOutlines(event.target.checked)}
-            />
-          </label>
-          <p>Just enough shape to feel the focus.</p>
-        </section>
-        <div className="inspector-bottom">
-          <div className="drag-note">
-            <MousePointer2 size={17} />
-            <p>
-              Move the chat.
-              <br />
-              <span>The space is yours.</span>
-            </p>
-            <ArrowDownLeft size={21} />
-          </div>
-          <button type="button" className="reset-button" onClick={reset}>
-            <RotateCcw size={13} />
-            Reset playground
-          </button>
+          ))}
         </div>
+        <div className="range-label">
+          <label htmlFor="blur">Blur</label>
+          <output htmlFor="blur">
+            {blur}
+            <span>px</span>
+          </output>
+        </div>
+        <input
+          id="blur"
+          className="blur-range"
+          type="range"
+          min="0"
+          max="12"
+          step="1"
+          value={blur}
+          onChange={(event) => setBlur(Number(event.target.value))}
+          style={{ '--range-value': `${(blur / 12) * 100}%` } as CSSProperties}
+        />
       </aside>
 
       <Composer
@@ -533,10 +332,9 @@ export default function App() {
       />
 
       {help && (
-        <section className="help-popover" aria-label="How Float works">
+        <section className="help-popover" aria-label="Keyboard shortcuts">
           <div className="help-title">
-            <FloatMark small />
-            <h2>A little room to think.</h2>
+            <h2>Keyboard shortcuts</h2>
             <button
               ref={helpCloseRef}
               type="button"
@@ -547,39 +345,24 @@ export default function App() {
               <X size={15} />
             </button>
           </div>
-          <p>This is a playground for how AI could feel in a workspace.</p>
-          <ul>
-            <li>
-              <MousePointer2 size={15} />
-              <span>
-                <strong>Move it.</strong> Drag the dotted handle anywhere.
-              </span>
-            </li>
-            <li>
-              <Crosshair size={15} />
-              <span>
-                <strong>Focus it.</strong> Select an outline to quiet the rest.
-              </span>
-            </li>
-            <li>
-              <Sparkles size={15} />
-              <span>
-                <strong>Try it.</strong> Send a thought to open a demo reply.
-              </span>
-            </li>
-            <li>
-              <Check size={15} />
-              <span>
-                <strong>Your keyboard works too.</strong> Use ⌘/Ctrl K to type,
-                arrow keys on the handle to move, Home to dock, and Esc to clear
-                focus.
-              </span>
-            </li>
-          </ul>
-          <div className="help-disclaimer">
-            No AI service is connected. Messages stay in this tab and disappear
-            on reload.
-          </div>
+          <dl className="shortcuts">
+            <div>
+              <dt>Message</dt>
+              <dd>⌘ / Ctrl K</dd>
+            </div>
+            <div>
+              <dt>Move focused handle</dt>
+              <dd>Arrow keys</dd>
+            </div>
+            <div>
+              <dt>Dock focused handle</dt>
+              <dd>Home</dd>
+            </div>
+            <div>
+              <dt>Clear focus</dt>
+              <dd>Esc</dd>
+            </div>
+          </dl>
         </section>
       )}
       <div className="sr-only" aria-live="polite">

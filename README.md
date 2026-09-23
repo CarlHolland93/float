@@ -1,8 +1,8 @@
 # Float
 
-**A little space to think.** An open-source playground for movable AI chat and contextual focus.
+An open-source prototype for movable chat and contextual focus.
 
-Float explores a simple idea: bring the conversation to the work. Drag a compact chat input anywhere on the screen, expand it into a conversation, and soften the surrounding canvas without losing your place.
+Drag the chat input anywhere on the screen, expand it into a conversation, and blur the surrounding page. The interface keeps navigation and focus controls minimal so attention stays on the centre.
 
 ![Float playground with a movable chat input and content outlines](docs/playground.png)
 
@@ -24,7 +24,7 @@ Requires Node.js 22.12+ and npm. Open the local URL printed by Vite.
 - **Move:** drag the dotted handle, or the conversation header. The panel stays inside the visible viewport.
 - **Expand:** use the expand button or send a message to open the conversation.
 - **Focus:** choose Chat to soften the page, or Area to keep one outlined section sharp. Off restores the canvas.
-- **Tune:** adjust the blur from 0 to 12px, or hide the content outlines.
+- **Tune:** adjust the blur from 0 to 12px.
 - **Dock:** use the `+` menu to place chat at the bottom left, centre, or right.
 - **Reset:** return to the initial canvas and clear the demo conversation.
 
@@ -44,7 +44,7 @@ This is an **interaction prototype**, with local, predefined replies. No AI prov
 
 The page contains faint outlines instead of document content. Selecting an area associates its name with the conversation; it does not extract document text. The visual blur is an attention aid, not a privacy or redaction feature.
 
-The three-column workspace was inspired by a Pocket interface reference. This implementation uses original Float branding, neutral outline shapes, and no reference screenshots, meeting content, or Pocket assets. It is not affiliated with Pocket.
+The three-column workspace was inspired by a Pocket interface reference. This implementation uses neutral controls and outline shapes, with no interface branding, reference screenshots, meeting content, or Pocket assets. It is not affiliated with Pocket.
 
 ## Development
 

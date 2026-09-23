@@ -3,20 +3,17 @@ import type { CSSProperties, RefObject } from 'react';
 import {
   ArrowUp,
   Check,
-  ChevronDown,
   Copy,
   Crosshair,
   GripVertical,
   Maximize2,
-  MessageCircle,
   Minus,
   PanelBottom,
   Plus,
-  Sparkles,
   X,
 } from 'lucide-react';
 import { useFloating } from '../hooks/useFloating';
-import { FloatMark, IconButton } from './Controls';
+import { IconButton } from './Controls';
 
 export type Message = {
   id: number;
@@ -117,7 +114,7 @@ export function Composer({
         messages
           .map(
             (message) =>
-              `${message.role === 'user' ? 'You' : 'Float'}: ${message.content}`,
+              `${message.role === 'user' ? 'You' : 'Assistant'}: ${message.content}`,
           )
           .join('\n\n'),
       );
@@ -153,8 +150,7 @@ export function Composer({
               title="Drag to move · Arrow keys to reposition"
               {...handleProps}
             >
-              <FloatMark small />
-              <span>Float</span>
+              <span>Conversation</span>
               <GripVertical size={15} />
             </button>
             <span className="demo-badge">Demo</span>
@@ -182,16 +178,9 @@ export function Composer({
             aria-live="polite"
           >
             {messages.length === 0 ? (
-              <div className="conversation-empty">
-                <FloatMark />
-                <h2>A little space to think.</h2>
-                <p>
-                  Bring the conversation to your work.
-                  <br />
-                  Move it anywhere. Keep what matters in focus.
-                </p>
-                <span>Local demo · no AI connection</span>
-              </div>
+              <span className="sr-only">
+                No messages yet. No AI provider is connected.
+              </span>
             ) : (
               messages.map((message) => (
                 <div
@@ -199,9 +188,7 @@ export function Composer({
                   className={`message message-${message.role}`}
                 >
                   {message.role === 'assistant' && (
-                    <span className="message-label">
-                      <Sparkles size={13} /> Float <span>· Demo response</span>
-                    </span>
+                    <span className="message-label">Demo response</span>
                   )}
                   <p>{message.content}</p>
                 </div>
@@ -225,15 +212,6 @@ export function Composer({
           <IconButton label="Clear focused area" onClick={onClearContext}>
             <X size={12} />
           </IconButton>
-        </div>
-      )}
-      {expanded && (
-        <div className="suggestion-row">
-          {['Summarise', 'Explore', 'Rewrite'].map((text) => (
-            <button type="button" key={text} onClick={() => submit(text)}>
-              {text}
-            </button>
-          ))}
         </div>
       )}
       <form
@@ -269,7 +247,6 @@ export function Composer({
           </IconButton>
           {menu && (
             <div className={`composer-menu ${menuBelow ? 'menu-below' : ''}`}>
-              <span className="menu-heading">BRING YOUR CONTEXT</span>
               <button
                 type="button"
                 onClick={() => {
@@ -299,12 +276,8 @@ export function Composer({
         </div>
         <input
           ref={inputRef}
-          aria-label="Message Float"
-          placeholder={
-            expanded
-              ? 'Keep the thought going…'
-              : 'Ask anything, from anywhere…'
-          }
+          aria-label="Message"
+          placeholder={expanded ? 'Reply…' : 'Ask anything…'}
           value={draft}
           maxLength={2000}
           autoComplete="off"
@@ -333,26 +306,6 @@ export function Composer({
           <ArrowUp size={18} />
         </button>
       </form>
-      <div className="composer-bottomline">
-        <span>
-          <span className="status-dot" />
-          {expanded
-            ? 'A local interaction demo'
-            : 'A thought, wherever you are'}
-        </span>
-        <span>
-          {expanded ? (
-            <>
-              <MessageCircle size={11} /> Float playground
-            </>
-          ) : (
-            <>
-              <span className="mini-grip">⠿</span> Drag to move{' '}
-              <ChevronDown size={11} />
-            </>
-          )}
-        </span>
-      </div>
     </section>
   );
 }

@@ -1,5 +1,15 @@
 # Float implementation
 
+## Simplification pass
+
+- [x] Remove branding, the Personal space block, peripheral copy, and the Context and Canvas control sections.
+- [x] Reduce chat and document decoration to outlines and essential controls.
+- [x] Check the simplified desktop/mobile interface and update the preview. Publish through the existing GitHub Pages workflow.
+
+The central outlines and movable input are now the primary content. The right rail contains only focus mode and blur strength. Removed section numbers, taglines, welcome content, the outlines toggle, suggestion chips, and the branded favicon. Area selection remains available from the focus control and the input menu.
+
+Verified the simplified layout at desktop and 390px mobile width; chat submission, expansion, keyboard movement, area selection, and Escape still work. Production build, formatting checks, and 14 geometry tests pass.
+
 - [x] Review the reference and confirm faint content outlines.
 - [x] Verify GitHub access and repository availability.
 - [x] Build a neutral, responsive three-column shell with content outlines.

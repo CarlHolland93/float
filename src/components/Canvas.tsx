@@ -19,22 +19,15 @@ export function Canvas({
   selected,
   picking,
   blurred,
-  showOutlines,
   onSelect,
 }: {
   selected: number | null;
   picking: boolean;
   blurred: boolean;
-  showOutlines: boolean;
   onSelect: (region: number) => void;
 }) {
   return (
-    <div
-      className={`document ${picking ? 'is-picking' : ''} ${showOutlines ? '' : 'no-outlines'}`}
-    >
-      <div className="page-caption">
-        <span className="status-dot" /> YOUR SPACE, WITHOUT THE NOISE
-      </div>
+    <div className={`document ${picking ? 'is-picking' : ''}`}>
       <div className="document-regions">
         {regions.map((name, index) => (
           <button
@@ -46,8 +39,6 @@ export function Canvas({
             className={`document-region region-${index} ${selected === index ? 'is-selected' : ''} ${blurred && selected !== index ? 'is-blurred' : ''}`}
           >
             <div className="region-topline">
-              <span className="region-number">0{index + 1}</span>
-              <span className="region-label">{name}</span>
               <span className="region-action">
                 {selected === index ? (
                   <Check size={13} />
@@ -103,9 +94,6 @@ export function Canvas({
             )}
           </button>
         ))}
-      </div>
-      <div className="document-footnote">
-        <span /> Nothing to read. Just room to experiment. <span />
       </div>
     </div>
   );
