@@ -4,3 +4,4 @@
 - Focus areas should share one corner-radius token in every state. Section-specific divider styling must not override the top corners and produce square hover or selection outlines.
 - When Charlie asks to match a specific reference control, reproduce its dimensions, labels, control placement, and shadow. Do not replace the reference interaction with a newly branded version. Keep private reference content out of the public demo.
 - Match the relevant parts of a reference, then remove actions that do not support this prototype. Response-style shortcuts add noise to an experiment about movable chat and focus.
+- Collapsing a side panel should preserve the reference's narrow outer frame and rounded workspace corners. Match the filled split-panel toggle silhouette instead of adding directional arrows.

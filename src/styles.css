@@ -26,6 +26,7 @@
   --nav-width: 220px;
   --inspector-width: 254px;
   --topbar-height: 62px;
+  --workspace-inset: 6px;
   --radius-sm: 7px;
   --radius-md: 12px;
   --radius-lg: 22px;
@@ -122,10 +123,10 @@ svg {
   );
 }
 .app.sidebar-collapsed {
-  --nav-width: 0px;
+  --nav-width: var(--workspace-inset);
 }
 .app.inspector-collapsed {
-  --inspector-width: 0px;
+  --inspector-width: var(--workspace-inset);
 }
 .sidebar-collapsed .sidebar,
 .inspector-collapsed .inspector {
@@ -163,6 +164,9 @@ svg {
 .icon-button:hover {
   background: #818a9210;
   color: var(--color-ink);
+}
+.panel-toggle {
+  color: var(--color-faint);
 }
 .document-tab {
   display: flex;
@@ -222,7 +226,7 @@ svg {
   grid-row: 2;
   min-width: 0;
   min-height: 0;
-  margin-bottom: 12px;
+  margin-bottom: var(--workspace-inset);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -1024,7 +1028,7 @@ svg {
 }
 @media (max-width: 900px) {
   :root {
-    --nav-width: 0px;
+    --nav-width: var(--workspace-inset);
   }
   .sidebar {
     display: none;
@@ -1046,9 +1050,6 @@ svg {
   .topbar {
     padding-left: 20px;
   }
-  .canvas-shell {
-    margin-left: 12px;
-  }
   .topbar-left {
     gap: 6px;
   }
@@ -1058,7 +1059,7 @@ svg {
 }
 @media (max-width: 700px) {
   :root {
-    --inspector-width: 0px;
+    --inspector-width: var(--workspace-inset);
     --topbar-height: 57px;
   }
   .topbar {
@@ -1091,9 +1092,6 @@ svg {
     background: #f1f3f4f7;
     backdrop-filter: blur(16px);
     box-shadow: -8px 0 30px #52627014;
-  }
-  .canvas-shell {
-    margin: 0 9px 9px;
   }
   .canvas-toolbar {
     padding: 12px 19px;

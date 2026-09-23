@@ -1,5 +1,13 @@
 # Float implementation
 
+## Collapsed workspace frame
+
+- [x] Match Pocket's filled split-panel icons for the left and right toggles.
+- [x] Preserve a slim 6px outer frame and rounded workspace corners when either panel is collapsed, including mobile.
+- [x] Check panel toggles and responsive layouts.
+
+Production build passed. Visually checked desktop with both panels collapsed and with one open, plus the frame at 390px mobile width. Panel toggles expose their expanded state and retain the same split-panel icon in either state.
+
 ## Pocket composer reference
 
 - [x] Remove the Detailed, Concise, and Rewrite actions and their unused state; retain the clean input and conversation.

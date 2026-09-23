@@ -8,16 +8,12 @@ import {
   Github,
   Home,
   MessageCircle,
-  PanelLeftClose,
-  PanelLeftOpen,
-  PanelRightClose,
-  PanelRightOpen,
   RotateCcw,
   X,
 } from 'lucide-react';
 import { Canvas, regions } from './components/Canvas';
 import { Composer, type Message } from './components/Composer';
-import { IconButton } from './components/Controls';
+import { IconButton, PanelIcon } from './components/Controls';
 import { demoResponse } from './lib/demo-response';
 
 type Focus = 'off' | 'chat' | 'area';
@@ -146,13 +142,12 @@ export default function App() {
         <div className="topbar-left">
           <IconButton
             label={sidebar ? 'Hide navigation' : 'Show navigation'}
+            className="panel-toggle"
+            aria-expanded={sidebar}
+            aria-controls="main-navigation"
             onClick={() => setSidebar(!sidebar)}
           >
-            {sidebar ? (
-              <PanelLeftClose size={16} />
-            ) : (
-              <PanelLeftOpen size={16} />
-            )}
+            <PanelIcon side="left" />
           </IconButton>
           <div className="document-tab">
             <FileText size={14} />
@@ -162,18 +157,21 @@ export default function App() {
         <div className="topbar-right">
           <IconButton
             label={inspector ? 'Hide focus controls' : 'Show focus controls'}
+            className="panel-toggle"
+            aria-expanded={inspector}
+            aria-controls="focus-controls"
             onClick={() => setInspector(!inspector)}
           >
-            {inspector ? (
-              <PanelRightClose size={16} />
-            ) : (
-              <PanelRightOpen size={16} />
-            )}
+            <PanelIcon side="right" />
           </IconButton>
         </div>
       </header>
 
-      <aside className="sidebar" aria-label="Main navigation">
+      <aside
+        id="main-navigation"
+        className="sidebar"
+        aria-label="Main navigation"
+      >
         <nav>
           <button
             type="button"
@@ -275,7 +273,11 @@ export default function App() {
         </div>
       </main>
 
-      <aside className="inspector" aria-label="Focus controls">
+      <aside
+        id="focus-controls"
+        className="inspector"
+        aria-label="Focus controls"
+      >
         <h1 className="focus-heading">Focus</h1>
         <div className="segmented" aria-label="Focus mode" role="group">
           {(['off', 'chat', 'area'] as const).map((value) => (
