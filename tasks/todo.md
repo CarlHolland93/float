@@ -7,7 +7,7 @@
 - [x] Match the 580px pill, 680px expanded panel, controls, type sizes, and blue/pastel shadow in the supplied references.
 - [x] Preserve movement and area focus with unobtrusive drag targets, and use neutral local sample responses.
 - [x] Verify compact/expanded layouts and mobile bounds.
-- [ ] Publish together with the rounded focus-area change.
+- [x] Publish together with the rounded focus-area change. GitHub Pages deployment succeeded and the live interface was checked.
 
 Verified compact edge dragging, keyboard docking, opening and closing the conversation, sending and resetting local messages, feedback, and the Pro selector. Both layouts fit a 390px viewport. TypeScript/production build and all 14 geometry tests pass. Removed the response-style actions from both layouts as requested.
 
